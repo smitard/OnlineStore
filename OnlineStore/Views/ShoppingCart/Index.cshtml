@@ -1,0 +1,58 @@
+﻿@model ShoppingCartViewModel
+
+<div class="row checkoutForm">
+    <h2>Your shopping cart</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Selected amount</th>
+                <th>Instrument</th>
+                <th class="text-right">Price</th>
+                <th class="text-right">Subtotal</th>
+                <th class="border-right-0"></th>
+                <th class="border-left-0 border-right-0"> </th>
+                <th class="border-left-0"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+            {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.Product.Name</td>
+                <td class="text-right">@line.Product.Price.ToString("c")</td>
+                <td class="text-right">
+                    @((line.Quantity * line.Product.Price).ToString("c"))
+                </td>
+                <td class="text-center">
+                    <a class="text-success" asp-controller="ShoppingCart" asp-action="Increase" asp-route-productId="@line.Product.ProductId">+</a>
+                </td>
+                <td class="text-center">
+                    <a class="text-danger" asp-controller="ShoppingCart" asp-action="Decrease" asp-route-productId="@line.Product.ProductId">-</a>
+                </td>
+                <td class="text-center">
+                    <a class="text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-productId="@line.Product.ProductId">Remove</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total:</td>
+                <td class="text-right">
+                    @Model.ShoppingCartTotal.ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-center align-content-center">
+        <a class="btn btn-success text-right" asp-controller="Home" asp-action="Index">
+            Back to shopping
+        </a>
+        <a class="btn btn-danger" asp-controller="ShoppingCart" asp-action="ClearShoppingCart">
+            Clear Cart
+        </a>
+    </div>
+
+</div>

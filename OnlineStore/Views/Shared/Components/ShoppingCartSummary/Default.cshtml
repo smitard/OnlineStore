@@ -1,0 +1,17 @@
+﻿
+@model ShoppingCartViewModel
+
+
+@if (Model.ShoppingCart.ShoppingCartItems.Count > 0)
+{
+    <li>
+        <a asp-controller="ShoppingCart">
+            <span id="cart-status">
+            Cart: @Model.ShoppingCart.ShoppingCartItems.Count
+            </span>
+            <span id="cart-total">
+            Total: @Model.ShoppingCartTotal
+            </span>
+        </a>
+    </li>
+}

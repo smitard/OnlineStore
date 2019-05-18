@@ -1,0 +1,10 @@
+﻿@model CategoriesViewModel
+<p></p>
+<span>Categories: </span>
+<p></p>
+@foreach (var category in Model.Categories)
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-category="@category.CategoryName"> @category.CategoryName</a>
+    </li>
+}

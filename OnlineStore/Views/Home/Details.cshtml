@@ -1,0 +1,15 @@
+﻿@model Product
+
+<div class="container marginTop p-xl-5">
+    <img class="img-fluid rounded mx-auto d-block" src="@Model.ImageUrl"/>
+    <h2>@Model.Name</h2>
+    <p>@Model.FullDescription</p>
+    <h3 class="text-right">Price: @Model.Price.ToString("c")</h3>
+    <div class="addToCart text-right">
+        <p class="button ">
+            <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@Model.ProductId">
+                Add to cart
+            </a>
+        </p>
+    </div>
+</div>
