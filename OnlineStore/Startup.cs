@@ -11,7 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineStore.Data;
 using OnlineStore.Data.Interfaces;
-using OnlineStore.Data.Mocks;
 using OnlineStore.Data.Models;
 using OnlineStore.Data.Repositories;
 
